@@ -1,0 +1,19 @@
+<h1 class="jumbotron text-center bg-secondary text-light p-3">Capital</h1>
+
+<form [formGroup]="capitalForm" (ngSubmit)="setCapitalForm()" class="row" novalidate>
+  <div class="col-lg-8">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(capitalForm.controls['capitalName'])"
+    formControlName="capitalName" placeholder="Capital Name" autofocus>
+    <app-form-error class="invalid-feedback" [control]="capitalForm.controls['capitalName']"></app-form-error>
+  </div>
+  <div class="col-lg-4">
+    <button type="submit" class="btn btn-success text-light w-100">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="countries.length" class="mt-5">
+  <app-countries [countries]="countries"></app-countries>
+</div>
+
+<app-no-result [isNoResult]="errorCountries"></app-no-result>

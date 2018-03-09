@@ -1,0 +1,57 @@
+<div class="card">
+  <img class="card-img-top" [src]="country.flag" [alt]="country.name">
+  <div class="card-header text-center">
+    <h3 class="card-title">{{ country.name }}</h3>
+    <h5 class="card-subtitle text-muted">{{ country.capital }}</h5>
+  </div>
+  <div class="card-body">
+    <table class="table text-center">
+      <tr>
+        <td>Population</td>
+        <td class="text-muted">{{ country.population }} People</td>
+      </tr>
+      <tr>
+        <td>Region</td>
+        <td class="text-muted">{{ country.region }}</td>
+      </tr>
+      <tr>
+        <td>Languages</td>
+        <td class="text-muted">
+          <span *ngFor="let language of country.languages">{{ language.name }}
+            <br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Currencies</td>
+        <td class="text-muted">
+          <span *ngFor="let currency of country.currencies">{{ currency.code }} {{ currency.name }} {{ currency.symbol }}
+            <br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Timezones</td>
+        <td class="text-muted">
+          <span *ngFor="let timezone of country.timezones">{{ timezone }}
+            <br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Lat Lng</td>
+        <td class="text-muted">
+          <span *ngFor="let latlng of country.latlng">{{ latlng }}
+            <br>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Area</td>
+        <td class="text-muted">
+          <span>{{ country.area }}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

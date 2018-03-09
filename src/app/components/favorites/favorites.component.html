@@ -1,0 +1,6 @@
+<div class="row" *ngIf="!favoriteError">
+  <app-country-favorite class="col-lg-4 mb-5" *ngFor="let favorite of favorites"
+  [countryFavorite]="favorite" [isCanDeleted]="true"
+  (removeFavoriteCountry)="removeCountry($event)"></app-country-favorite>
+</div>
+<app-no-result [isNoResult]="favoriteError"></app-no-result>

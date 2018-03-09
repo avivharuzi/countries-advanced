@@ -1,0 +1,20 @@
+<h1 class="jumbotron text-center bg-secondary text-light p-3">Code</h1>
+
+<form [formGroup]="codeForm" (ngSubmit)="setCodeForm()" class="row" novalidate>
+  <div class="col-lg-8">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(codeForm.controls['code'])"
+    formControlName="code" placeholder="Code" autofocus>
+    <app-form-error class="invalid-feedback" [control]="codeForm.controls['code']"></app-form-error>
+  </div>
+  <div class="col-lg-4">
+    <button type="submit" class="btn btn-success text-light w-100">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="countries.length" class="mt-5">
+  <app-countries [countries]="countries"></app-countries>
+</div>
+
+<app-no-result [isNoResult]="errorCountries"></app-no-result>
+

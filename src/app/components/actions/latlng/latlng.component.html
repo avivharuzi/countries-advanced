@@ -1,0 +1,37 @@
+<h1 class="jumbotron text-center bg-secondary text-light p-3">Latlng</h1>
+
+<form [formGroup]="latlngForm" (ngSubmit)="setLatlngForm()" class="row" novalidate>
+  <div class="col-lg-2">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(latlngForm.controls['topLeftX'])"
+    formControlName="topLeftX" placeholder="Top Left X" autofocus>
+    <app-form-error class="invalid-feedback" [control]="latlngForm.controls['topLeftX']"></app-form-error>
+  </div>
+  <div class="col-lg-2">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(latlngForm.controls['topLeftY'])"
+    formControlName="topLeftY" placeholder="Top Left Y" autofocus>
+    <app-form-error class="invalid-feedback" [control]="latlngForm.controls['topLeftY']"></app-form-error>
+  </div>
+  <div class="col-lg-2">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(latlngForm.controls['bottomRightX'])"
+    formControlName="bottomRightX" placeholder="Bottom Right X" autofocus>
+    <app-form-error class="invalid-feedback" [control]="latlngForm.controls['bottomRightX']"></app-form-error>
+  </div>
+  <div class="col-lg-2">
+    <input type="text" class="form-control d-inline"
+    [ngClass]="validationService.statusClass(latlngForm.controls['bottomRightY'])"
+    formControlName="bottomRightY" placeholder="Bottom Right Y" autofocus>
+    <app-form-error class="invalid-feedback" [control]="latlngForm.controls['bottomRightY']"></app-form-error>
+  </div>
+  <div class="col-lg-4">
+    <button type="submit" class="btn btn-success text-light w-100">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="countries.length" class="mt-5">
+  <app-countries [countries]="countries"></app-countries>
+</div>
+
+<app-no-result [isNoResult]="errorCountries"></app-no-result>

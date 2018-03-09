@@ -1,0 +1,16 @@
+<div class="card">
+  <img class="card-img-top" [src]="countryFavorite.flag" [alt]="countryFavorite.name">
+  <div class="card-header text-center">
+    <h3 class="card-title">{{ countryFavorite.name }}</h3>
+    <h5 class="card-subtitle text-muted">{{ countryFavorite.capital }}</h5>
+  </div>
+  <div class="card-body text-center">
+    <button *ngIf="!isCanDeleted; else deleted" (click)="setCountryToFavorite()"
+    class="btn btn-default"><i class="fa fa-star"></i></button>
+    <ng-template #deleted>
+      <button (click)="deleteCountryFromFavorite()"
+      class="btn btn-default"><i class="fa fa-trash"></i>
+    </button>
+  </ng-template>
+  </div>
+</div>
