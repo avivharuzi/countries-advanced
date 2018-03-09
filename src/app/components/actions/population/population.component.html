@@ -4,13 +4,13 @@
   <div class="col-lg-4">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationForm.controls['min'])"
-    formControlName="min" placeholder="Min" autofocus>
+    formControlName="min" placeholder="Min (In Millions)" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationForm.controls['min']"></app-form-error>
   </div>
   <div class="col-lg-4">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationForm.controls['max'])"
-    formControlName="max" placeholder="Max" autofocus>
+    formControlName="max" placeholder="Max (In Millions)" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationForm.controls['max']"></app-form-error>
   </div>
   <div class="col-lg-4">

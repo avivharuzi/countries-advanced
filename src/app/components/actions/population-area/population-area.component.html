@@ -1,31 +1,31 @@
 <h1 class="jumbotron text-center bg-secondary text-light p-3">Population Area</h1>
 
 <form [formGroup]="populationAreaForm" (ngSubmit)="setPopulationAreaForm()" class="row" novalidate>
-  <div class="col-lg-2">
+  <div class="col-lg-3">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationAreaForm.controls['minPop'])"
-    formControlName="minPop" placeholder="Min Population" autofocus>
+    formControlName="minPop" placeholder="Min Population (In Millions)" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationAreaForm.controls['minPop']"></app-form-error>
   </div>
-  <div class="col-lg-2">
+  <div class="col-lg-3">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationAreaForm.controls['maxPop'])"
-    formControlName="maxPop" placeholder="Max Population" autofocus>
+    formControlName="maxPop" placeholder="Max Population (In Millions)" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationAreaForm.controls['maxPop']"></app-form-error>
   </div>
-  <div class="col-lg-2">
+  <div class="col-lg-3">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationAreaForm.controls['minArea'])"
     formControlName="minArea" placeholder="Min Area" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationAreaForm.controls['minArea']"></app-form-error>
   </div>
-  <div class="col-lg-2">
+  <div class="col-lg-3">
     <input type="text" class="form-control d-inline"
     [ngClass]="validationService.statusClass(populationAreaForm.controls['maxArea'])"
     formControlName="maxArea" placeholder="Max Area" autofocus>
     <app-form-error class="invalid-feedback" [control]="populationAreaForm.controls['maxArea']"></app-form-error>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-12 mt-5">
     <button type="submit" class="btn btn-success text-light w-100">Submit</button>
   </div>
 </form>

@@ -10,6 +10,7 @@ router.use('/', (req, res, next) => {
         let id = uuid.v1();
         favoriteModel.create(id);
         res.cookie('favorites', id);
+        req.cookies.favorites = id;
         next();
     } else {
         next();

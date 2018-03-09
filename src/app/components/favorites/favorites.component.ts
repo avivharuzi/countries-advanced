@@ -9,7 +9,6 @@ import { CountryService } from '../../services/country/country.service';
 })
 export class FavoritesComponent implements OnInit {
   public favorites: any[];
-  public favoriteError: boolean;
 
   constructor(
     public favoriteService: FavoriteService,
@@ -17,28 +16,23 @@ export class FavoritesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.favorites = null;
     this.getCountries();
   }
 
-  getCountries() {
+  getCountries(): void {
     if (document.cookie !== '') {
       this.favoriteService.getCountries().subscribe(res => {
         if (res.length) {
           this.countryService.getCountriesByCountryNames(res).subscribe(response => {
             this.favorites = response;
-            this.favoriteError = false;
           });
-        } else {
-          this.favoriteError = true;
         }
       }, error => console.log(error));
-    } else {
-      this.favoriteError = true;
     }
   }
 
-  removeCountry(country) {
+  removeCountry(country): void {
     this.favorites.splice(this.favorites.indexOf(country), 1);
   }
-
 }

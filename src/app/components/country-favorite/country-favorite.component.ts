@@ -22,14 +22,11 @@ export class CountryFavoriteComponent implements OnInit {
   }
 
   setCountryToFavorite() {
-    this.favoriteService.setCountry({ country: this.countryFavorite.name }).subscribe(res => {
-      console.log(res);
-    });
+    this.favoriteService.setCountry({ country: this.countryFavorite.name }).subscribe();
   }
 
   deleteCountryFromFavorite() {
     this.favoriteService.deleteCountry(this.countryFavorite.name).subscribe(res => {
-      console.log(res);
       this.removeFavoriteCountry.emit(this.countryFavorite);
     });
   }
