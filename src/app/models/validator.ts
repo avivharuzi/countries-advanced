@@ -1,6 +1,11 @@
 import { ValidatorFn, FormControl } from '@angular/forms';
 
 export class Validator {
+  private static readonly IS_NUMERIC_FLOAT_REGEX: RegExp = /^[+-]?\d+(\.\d+)?$/;
+  private static readonly PHONE_ISRAEL_REGEX: RegExp = /^((\+972|972)|0)( |-)?([1-468-9]( |-)?\d{7}|(5|7)[0-9]( |-)?\d{7})$/;
+  private static readonly WITHOUT_NUMBERS_REGEX: RegExp = /^[^\d]*$/;
+  private static readonly IS_EMAIL_REGEX: RegExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
   static required(name: string): ValidatorFn {
     return formControl => formControl.value === '' || formControl.value === null ? { 'requiredError': `${name} is required` } : null;
   }
@@ -22,11 +27,9 @@ export class Validator {
   }
 
   static isNumericFloat() {
-    const reg: RegExp = /^[+-]?\d+(\.\d+)?$/;
-
     return (formControl) => {
       if (formControl.value !== null) {
-        return !reg.test(formControl.value) ? { 'isNumericFloatError': `Only numbers are accepted` } : null;
+        return !Validator.IS_NUMERIC_FLOAT_REGEX.test(formControl.value) ? { 'isNumericFloatError': `Only numbers are accepted` } : null;
       }
     };
   }
@@ -36,17 +39,22 @@ export class Validator {
   }
 
   static phoneIsrael(): ValidatorFn {
-    const reg: RegExp = /^((\+972|972)|0)( |-)?([1-468-9]( |-)?\d{7}|(5|7)[0-9]( |-)?\d{7})$/;
-
     return (formControl) => {
       if (formControl.value !== null) {
-        return !reg.test(formControl.value) ? { 'phoneIsraelError': `Phone number is invalid` } : null;
+        return !Validator.PHONE_ISRAEL_REGEX.test(formControl.value) ? { 'phoneIsraelError': `Phone number is invalid` } : null;
       }
     };
   }
 
   static withoutNumbers(): ValidatorFn {
-    const reg: RegExp = /^[^\d]*$/;
-    return formControl => !reg.test(formControl.value) ? { 'withoutNumbersError': `You cant type numbers` } : null;
+    return formControl => !Validator.WITHOUT_NUMBERS_REGEX.test(formControl.value) ? { 'withoutNumbersError': `You cant type numbers` } : null;
+  }
+
+  static isEmail(): ValidatorFn {
+    return (formControl) => {
+      if (formControl.value !== null) {
+        return !Validator.IS_EMAIL_REGEX.test(formControl.value) ? { 'isEmailError': `Email is invalid` } : null;
+      }
+    };
   }
 }
