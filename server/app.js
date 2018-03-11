@@ -21,7 +21,6 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '../dist')));
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.use('/', authRoute);
 app.use('/api/countries', countriesRoute);
