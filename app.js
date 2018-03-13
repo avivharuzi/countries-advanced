@@ -20,14 +20,15 @@ app.use(cookieParser());
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.use('/', authRoute);
 app.use('/api/countries', countriesRoute);
 app.use('/api/favorites', favoritesRoute);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 module.exports = app;
